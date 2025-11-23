@@ -36,15 +36,11 @@ public class Movie {
       return _title;
   }
 
-  // MÉTODO ATUALIZADO (Delega para o objeto Price)
   public double getCharge(int daysRented) {
      return _price.getCharge(daysRented);
   }
   
   public int getFrequentRenterPoints(int daysRented) {
-     if ((getPriceCode() == NEW_RELEASE) && daysRented > 1) {
-        return 2;
-     }
-     return 1;
+     return _price.getFrequentRenterPoints(daysRented);
   }
 }
