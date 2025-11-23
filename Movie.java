@@ -5,7 +5,7 @@ public class Movie {
   public static final int  NEW_RELEASE = 1;
 
   private String _title;
-  private Price _price; // Novo campo
+  private Price _price;
 
   public Movie(String title, int priceCode) {
       _title = title;
@@ -13,7 +13,7 @@ public class Movie {
   }
 
   public int getPriceCode() {
-      return _price.getPriceCode(); // Delega para o objeto Price
+      return _price.getPriceCode();
   }
 
   public void setPriceCode(int arg) {
@@ -36,24 +36,9 @@ public class Movie {
       return _title;
   }
 
+  // MÉTODO ATUALIZADO (Delega para o objeto Price)
   public double getCharge(int daysRented) {
-     double result = 0;
-     switch (getPriceCode()) {
-        case REGULAR:
-           result += 2;
-           if (daysRented > 2)
-              result += (daysRented - 2) * 1.5;
-           break;
-        case NEW_RELEASE:
-           result += daysRented * 3;
-           break;
-        case CHILDRENS:
-           result += 1.5;
-           if (daysRented > 3)
-              result += (daysRented - 3) * 1.5;
-           break;
-     }
-     return result;
+     return _price.getCharge(daysRented);
   }
   
   public int getFrequentRenterPoints(int daysRented) {
